@@ -1,4 +1,4 @@
-# Chat Retrieval AI
+# AI Ghostwriter
 
 ## Version: 1.0.0
 
