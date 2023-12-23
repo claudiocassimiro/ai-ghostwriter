@@ -28,6 +28,28 @@ const save = async (req: Request, res: Response) => {
   }
 };
 
+const saveCopywriteKnowledge = async (req: Request, res: Response) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+
+  try {
+    const docs = await findPDFByFilename(req.file.filename);
+
+    const splitedDocument = await splitTextsIntoChunks(docs);
+
+    if (!splitedDocument) {
+      return res.status(400).json({ message: "The uploaded file was empty" });
+    }
+
+    await handlerVectorDB.saveCopywriteKnowledge(splitedDocument);
+
+    return res.status(200).json({ message: "File uploaded successfully" });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const saveManyPdfs = async (_req: Request, res: Response) => {
   try {
     const docs = await readAllpdfs();
@@ -74,6 +96,7 @@ const deleteAllDocuments = async (req: Request, res: Response) => {
 
 const pdfController = {
   save,
+  saveCopywriteKnowledge,
   deleteAllDocuments,
   saveManyPdfs,
 };
