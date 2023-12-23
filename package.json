@@ -1,7 +1,7 @@
 {
-  "name": "chat-retrieval-ai",
+  "name": "ai-ghostwriter",
   "version": "1.0.0",
-  "description": "Chat Application to retrieval data and awser quetions about this information.",
+  "description": "Ghostwriter Application that retrieval data about an theme and create a rich content about choosen theme.",
   "main": "index.ts",
   "scripts": {
     "test": "npm test",
