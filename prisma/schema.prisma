@@ -15,3 +15,9 @@ model Document {
   content String
   vector  Unsupported("vector")?
 }
+
+model CopywriteKnowledge {
+  id      String                 @id @default(cuid())
+  content String
+  vector  Unsupported("vector")?
+}
